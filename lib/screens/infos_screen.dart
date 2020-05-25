@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../animated_dialog_box.dart';
+
 class InfosScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -17,114 +19,294 @@ class InfosScreen extends StatelessWidget {
       ),
       body: GridView.count(
         primary: false,
-        padding: const EdgeInsets.all(30),
-        crossAxisSpacing: 25,
-        mainAxisSpacing: 25,
+        padding: const EdgeInsets.all(40),
+        crossAxisSpacing: 40,
+        mainAxisSpacing: 40,
         crossAxisCount: 2,
         children: <Widget>[
-          Container(
-            padding: const EdgeInsets.all(8),
-            child: Center(
-              child: const Text(
-                "1° SI",
-                style: TextStyle(
-                  fontSize: 40.0,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFFed145b),
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            decoration: BoxDecoration(
-              border: Border.all(
+          MaterialButton(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+              side: BorderSide(
                 color: Color(0xFFed145b),
-                width: 5,
-              ),
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(25.0),
-                topRight: Radius.circular(25.0),
-                bottomRight: Radius.circular(25.0),
-                bottomLeft: Radius.circular(25.0),
+                width: 2,
               ),
             ),
+            color: Colors.white,
+            child: const Text(
+              "1° SI",
+              style: TextStyle(
+                fontSize: 40.0,
+                // fontWeight: FontWeight.bold,
+                color: Color(0xFFed145b),
+              ),
+              textAlign: TextAlign.center,
+            ),
+            onPressed: () async {
+              await AnimatedDialogBox.showCustomAlertBox(
+                  context: context,
+                  firstButton: MaterialButton(
+                    minWidth: 50.0,
+                    padding: const EdgeInsets.all(20.0),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    color: Colors.white,
+                    child: Text(
+                      'Matutino',
+                      style: TextStyle(
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFFed145b),
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                  secondButton: MaterialButton(
+                    minWidth: 50.0,
+                    padding: const EdgeInsets.all(20.0),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    color: Colors.white,
+                    child: Text(
+                      'Noturno',
+                      style: TextStyle(
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFFed145b),
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                  yourWidget: Container(
+                    child: Text(
+                      'Qual período do 1°SI deseja visualizar?',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFFed145b),
+                      ),
+                    ),
+                  ));
+            },
           ),
-          Container(
-            padding: const EdgeInsets.all(8),
-            child: Center(
-              child: const Text(
-                "2° SI",
-                style: TextStyle(
-                  fontSize: 40.0,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFFed145b),
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            decoration: BoxDecoration(
-              border: Border.all(
+          MaterialButton(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+              side: BorderSide(
                 color: Color(0xFFed145b),
-                width: 5,
-              ),
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(25.0),
-                topRight: Radius.circular(25.0),
-                bottomRight: Radius.circular(25.0),
-                bottomLeft: Radius.circular(25.0),
+                width: 2,
               ),
             ),
+            color: Colors.white,
+            child: const Text(
+              "2° SI",
+              style: TextStyle(
+                fontSize: 40.0,
+                // fontWeight: FontWeight.bold,
+                color: Color(0xFFed145b),
+              ),
+              textAlign: TextAlign.center,
+            ),
+            onPressed: () async {
+              await AnimatedDialogBox.showCustomAlertBox(
+                  context: context,
+                  firstButton: MaterialButton(
+                    minWidth: 50.0,
+                    padding: const EdgeInsets.all(20.0),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    color: Colors.white,
+                    child: Text(
+                      'Matutino',
+                      style: TextStyle(
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFFed145b),
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                  secondButton: MaterialButton(
+                    minWidth: 50.0,
+                    padding: const EdgeInsets.all(20.0),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    color: Colors.white,
+                    child: Text(
+                      'Noturno',
+                      style: TextStyle(
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFFed145b),
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                  yourWidget: Container(
+                    child: Text(
+                      'Qual período do 2°SI deseja visualizar?',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFFed145b),
+                      ),
+                    ),
+                  ));
+            },
           ),
-          Container(
-            padding: const EdgeInsets.all(8),
-            child: Center(
-              child: const Text(
-                "3° SI",
-                style: TextStyle(
-                  fontSize: 40.0,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFFed145b),
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            decoration: BoxDecoration(
-              border: Border.all(
+          MaterialButton(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+              side: BorderSide(
                 color: Color(0xFFed145b),
-                width: 5,
-              ),
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(25.0),
-                topRight: Radius.circular(25.0),
-                bottomRight: Radius.circular(25.0),
-                bottomLeft: Radius.circular(25.0),
+                width: 2,
               ),
             ),
+            color: Colors.white,
+            child: const Text(
+              "3° SI",
+              style: TextStyle(
+                fontSize: 40.0,
+                // fontWeight: FontWeight.bold,
+                color: Color(0xFFed145b),
+              ),
+              textAlign: TextAlign.center,
+            ),
+            onPressed: () async {
+              await AnimatedDialogBox.showCustomAlertBox(
+                  context: context,
+                  firstButton: MaterialButton(
+                    minWidth: 50.0,
+                    padding: const EdgeInsets.all(20.0),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    color: Colors.white,
+                    child: Text(
+                      'Matutino',
+                      style: TextStyle(
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFFed145b),
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                  secondButton: MaterialButton(
+                    minWidth: 50.0,
+                    padding: const EdgeInsets.all(20.0),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    color: Colors.white,
+                    child: Text(
+                      'Noturno',
+                      style: TextStyle(
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFFed145b),
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                  yourWidget: Container(
+                    child: Text(
+                      'Qual período 3°SI deseja visualizar?',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFFed145b),
+                      ),
+                    ),
+                  ));
+            },
           ),
-          Container(
-            padding: const EdgeInsets.all(8),
-            child: Center(
-              child: const Text(
-                "4° SI",
-                style: TextStyle(
-                  fontSize: 40.0,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFFed145b),
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            decoration: BoxDecoration(
-              border: Border.all(
+          MaterialButton(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+              side: BorderSide(
                 color: Color(0xFFed145b),
-                width: 5,
-              ),
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(25.0),
-                topRight: Radius.circular(25.0),
-                bottomRight: Radius.circular(25.0),
-                bottomLeft: Radius.circular(25.0),
+                width: 2,
               ),
             ),
+            color: Colors.white,
+            child: const Text(
+              "4° SI",
+              style: TextStyle(
+                fontSize: 40.0,
+                // fontWeight: FontWeight.bold,
+                color: Color(0xFFed145b),
+              ),
+              textAlign: TextAlign.center,
+            ),
+            onPressed: () async {
+              await AnimatedDialogBox.showCustomAlertBox(
+                  context: context,
+                  firstButton: MaterialButton(
+                    minWidth: 50.0,
+                    padding: const EdgeInsets.all(20.0),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    color: Colors.white,
+                    child: Text(
+                      'Matutino',
+                      style: TextStyle(
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFFed145b),
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                  secondButton: MaterialButton(
+                    minWidth: 50.0,
+                    padding: const EdgeInsets.all(20.0),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    color: Colors.white,
+                    child: Text(
+                      'Noturno',
+                      style: TextStyle(
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFFed145b),
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                  yourWidget: Container(
+                    child: Text(
+                      'Qual período do 4ºSI deseja visualizar?',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFFed145b),
+                      ),
+                    ),
+                  ));
+            },
           ),
         ],
       ),
