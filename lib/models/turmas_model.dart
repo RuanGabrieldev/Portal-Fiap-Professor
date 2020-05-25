@@ -1,6 +1,8 @@
 import 'dart:convert';
 
-import 'package:podeapagar/model/Alunos.dart';
+import 'package:portal_fiap_professor/models/alunos_model.dart';
+
+
 
 class TurmasModel {
   int idTurma;

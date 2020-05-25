@@ -1,6 +1,8 @@
 import 'dart:convert';
-import 'package:podeapagar/model/Materia.dart';
-import 'package:podeapagar/model/Turmas.dart';
+
+import 'package:portal_fiap_professor/models/materias_model.dart';
+import 'package:portal_fiap_professor/models/turmas_model.dart';
+
 
 class ProfessorModel {
   int rm;

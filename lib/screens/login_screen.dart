@@ -78,15 +78,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
 
-                  GestureDetector(
-                    onTap: () {},
-                    child: Container(
-                      child: Text(
-                        "Não tem uma conta? crie agora!",
-                        style: textStyle(size: 15),
-                      ),
-                    ),
-                  )
                 ],
               ),
             ),

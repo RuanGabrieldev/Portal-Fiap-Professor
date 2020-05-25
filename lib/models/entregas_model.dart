@@ -1,8 +1,9 @@
 import 'dart:convert';
 
-import 'package:podeapagar/model/Alunos.dart';
-import 'package:podeapagar/model/Professor_model.dart';
-import 'package:podeapagar/model/Turmas.dart';
+import 'package:portal_fiap_professor/models/alunos_model.dart';
+import 'package:portal_fiap_professor/models/professor_model.dart';
+import 'package:portal_fiap_professor/models/turmas_model.dart';
+
 
 class EntregasModel {
   int codigo;

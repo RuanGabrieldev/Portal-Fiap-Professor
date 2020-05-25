@@ -1,6 +1,8 @@
 import 'dart:convert';
 
-import 'package:podeapagar/model/Presenca.dart';
+import 'package:portal_fiap_professor/models/presenca_model.dart';
+
+
 
 class AlunosModel {
   int rm;
