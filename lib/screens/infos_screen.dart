@@ -6,8 +6,14 @@ class InfosScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('SI Info'),
-        backgroundColor: Color(0xFFed145b),
+        title: Text(
+          'SI Info',
+          style: TextStyle(
+            color: Color(0xFFed145b),
+          ),
+        ),
+        backgroundColor: Color(0xFF000000),
+        iconTheme: IconThemeData(color: Color(0xFFed145b)),
       ),
       body: GridView.count(
         primary: false,
