@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:portal_fiap_professor/screens/infos_screen.dart';
+import 'package:portal_fiap_professor/screens/infos_si_screen.dart';
 import 'package:portal_fiap_professor/screens/login_screen.dart';
+import 'package:portal_fiap_professor/screens/si_periodos_screen.dart';
 
 void main() {
   runApp(
@@ -11,7 +12,8 @@ void main() {
       ),
       routes: {
         "/" : (context) => LoginScreen(),
-        '/infos': (context) => InfosScreen(),
+        '/infos': (context) => InfosSiScreen(),
+        '/periodo':(context) => SiPeriodosScreen(),
       },
       initialRoute: "/infos",
     )
