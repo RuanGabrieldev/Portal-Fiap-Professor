@@ -15,14 +15,10 @@ class BtnPattern extends StatelessWidget {
       margin: EdgeInsets.only(bottom: 0),
       width: MediaQuery.of(context).size.width ,
       child: FlatButton(
+        onPressed: (){},
         color: Colors.white,
         shape: RoundedRectangleBorder(borderRadius:
         BorderRadius.circular(8.0)),
-        onPressed: () async{
-          route != null ?
-          Navigator.pushNamed(context, route):
-          function();
-        },
         child: Text(text, style: TextStyle(
             fontFamily: "Roboto",
             fontWeight: FontWeight.bold

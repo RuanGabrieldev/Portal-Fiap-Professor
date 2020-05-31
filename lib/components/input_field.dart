@@ -9,9 +9,10 @@ class InputField extends StatelessWidget {
   final Color colorLine;
   final double sizeFont;
   final bool isCenter;
+  final TextEditingController controller;
 
 
-  InputField({this.hint = "", this.obscure = false, this.icon, this.label, this.colorLine = Colors.red, this.sizeFont  = 15, this.isCenter = false});
+  InputField({this.hint = "", this.obscure = false, this.icon, this.label, this.colorLine = Colors.red, this.sizeFont  = 15, this.isCenter = false, this.controller});
 
 
   @override
@@ -30,6 +31,7 @@ class InputField extends StatelessWidget {
           primaryColor: colorLine,
         ),
         child: TextFormField(
+          controller: controller,
           textAlign: isCenter ? TextAlign.center : TextAlign.start ,
           obscureText: obscure,
           style: TextStyle(color: Colors.white, ),

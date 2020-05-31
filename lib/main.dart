@@ -3,6 +3,7 @@ import 'package:portal_fiap_professor/models/turmas_model.dart';
 import 'package:portal_fiap_professor/repository/turma_repository.dart';
 
 import 'package:portal_fiap_professor/screens/login_screen.dart';
+import 'package:portal_fiap_professor/screens/teste_screen.dart';
 
 void main() {
 
@@ -14,6 +15,7 @@ void main() {
       ),
       routes: {
         "/" : (context) => LoginScreen(),
+        "/teste" : (context) => TesteScreen(),
       },
       initialRoute: "/",
     )

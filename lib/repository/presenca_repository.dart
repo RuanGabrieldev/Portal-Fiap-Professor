@@ -1,4 +1,3 @@
-
 import 'package:portal_fiap_professor/models/presenca_model.dart';
 import 'package:portal_fiap_professor/repository/database_helper.dart';
 import 'package:sqflite/sqflite.dart';

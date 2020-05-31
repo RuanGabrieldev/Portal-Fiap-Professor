@@ -8,7 +8,7 @@ class PresencaModel {
   String comentarios;
 
   PresencaModel({
-    this.idPreseca,
+    this.idPresenca,
     this.nomeAula,
     this.dataAula,
     this.presente,
@@ -20,7 +20,7 @@ class PresencaModel {
   String toJson() => json.encode(toMap());
 
   factory PresencaModel.fromMap(Map<String, dynamic> json) => PresencaModel(
-    idPreseca: json["idPreseca"],
+    idPresenca: json["idPreseca"],
     nomeAula: json["nomeAula"],
     dataAula: json["dataAula"],
     presente: json["presente"],
@@ -28,7 +28,7 @@ class PresencaModel {
   );
 
   Map<String, dynamic> toMap() => {
-    "idPreseca": idPreseca,
+    "idPreseca": idPresenca,
     "nomeAula": nomeAula,
     "dataAula": dataAula,
     "presente": presente,
