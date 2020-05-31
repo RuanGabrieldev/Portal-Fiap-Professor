@@ -1,25 +1,39 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:portal_fiap_professor/screens/turmas_screen.dart';
+import 'package:portal_fiap_professor/screens/presenca_screen.dart';
+import 'package:portal_fiap_professor/screens/si_periodos_screen.dart';
+import 'package:portal_fiap_professor/screens/visu_entregaveis_screen.dart';
 
-class CursoSelecaoScreen extends StatefulWidget {
+class FuncionalidadesScreen extends StatefulWidget {
+  final String periodo;
+  const FuncionalidadesScreen({Key key, this.periodo}) : super(key: key);
+
   @override
-  _CursoSelecaoScreen createState() => _CursoSelecaoScreen();
+  _FuncionalidadesScreen createState() => _FuncionalidadesScreen();
 }
 
-class _CursoSelecaoScreen extends State<CursoSelecaoScreen> {
+class _FuncionalidadesScreen extends State<FuncionalidadesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color(0xFF000000),
+        iconTheme: IconThemeData(color: Color(0xFFed145b)),
         title: Text(
-          'Cursos',
+          'Funcionalidades ${widget.periodo}',
           style: TextStyle(
             color: Color(0xFFed145b),
           ),
         ),
-        backgroundColor: Color(0xFF000000),
-        iconTheme: IconThemeData(color: Color(0xFFed145b)),
+        leading: new IconButton(
+          icon: new Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => SiPeriodosScreen()),
+            );
+          },
+        ),
       ),
       body: GridView.count(
         primary: false,
@@ -38,7 +52,7 @@ class _CursoSelecaoScreen extends State<CursoSelecaoScreen> {
             ),
             color: Colors.white,
             child: const Text(
-              "Sistemas da Informação",
+              "Lista de presença",
               style: TextStyle(
                 fontSize: 25.0,
                 // fontWeight: FontWeight.bold,
@@ -49,7 +63,7 @@ class _CursoSelecaoScreen extends State<CursoSelecaoScreen> {
             onPressed: () async {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => TurmasScreen()),
+                MaterialPageRoute(builder: (context) => PresencaScreen()),
               );
             },
           ),
@@ -63,7 +77,7 @@ class _CursoSelecaoScreen extends State<CursoSelecaoScreen> {
             ),
             color: Colors.white,
             child: const Text(
-              "Engenharia da Computação",
+              "Entrega de trabalhos",
               style: TextStyle(
                 fontSize: 25.0,
                 // fontWeight: FontWeight.bold,
@@ -74,32 +88,7 @@ class _CursoSelecaoScreen extends State<CursoSelecaoScreen> {
             onPressed: () async {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => TurmasScreen()),
-              );
-            },
-          ),
-          MaterialButton(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-              side: BorderSide(
-                color: Color(0xFFed145b),
-                width: 2,
-              ),
-            ),
-            color: Colors.white,
-            child: const Text(
-              "Jogos Digitais",
-              style: TextStyle(
-                fontSize: 25.0,
-                // fontWeight: FontWeight.bold,
-                color: Color(0xFFed145b),
-              ),
-              textAlign: TextAlign.center,
-            ),
-            onPressed: () async {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => TurmasScreen()),
+                MaterialPageRoute(builder: (context) => VisuEntregaveisScreen()),
               );
             },
           ),

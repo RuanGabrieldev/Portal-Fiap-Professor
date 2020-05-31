@@ -1,30 +1,38 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:portal_fiap_professor/models/turmas_model.dart';
-import 'package:portal_fiap_professor/repository/turma_repository.dart';
+import 'package:portal_fiap_professor/screens/curso_selecao_screen.dart';
 import 'package:portal_fiap_professor/screens/si_periodos_screen.dart';
 
-class InfosSiScreen extends StatefulWidget {
+class TurmasScreen extends StatefulWidget {
   @override
-  _InfosSiScreen createState() => _InfosSiScreen();
+  _TurmasScreen createState() => _TurmasScreen();
 }
 
-class _InfosSiScreen extends State<InfosSiScreen> {
+class _TurmasScreen extends State<TurmasScreen> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'SI Info',
-          style: TextStyle(
-            color: Color(0xFFed145b),
+        appBar: AppBar(
+          backgroundColor: Color(0xFF000000),
+          iconTheme: IconThemeData(color: Color(0xFFed145b)),
+          title: Text(
+            'Info',
+            style: TextStyle(
+              color: Color(0xFFed145b),
+            ),
+          ),
+          leading: new IconButton(
+            icon: new Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CursoSelecaoScreen()),
+              );
+            },
           ),
         ),
-        backgroundColor: Color(0xFF000000),
-        iconTheme: IconThemeData(color: Color(0xFFed145b)),
-      ),
       // body: FutureBuilder<List>(
       //   future: TurmaRepository().findAll(),
       //   builder: (context, snapshot) {
@@ -155,31 +163,31 @@ class _InfosSiScreen extends State<InfosSiScreen> {
         ],
       ),
 
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              child: Text('Drawer Header'),
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-            ),
-            ListTile(
-              title: Text('Item 1'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: Text('Item 2'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-          ],
-        ),
-      ),
+      // drawer: Drawer(
+      //   child: ListView(
+      //     padding: EdgeInsets.zero,
+      //     children: <Widget>[
+      //       DrawerHeader(
+      //         child: Text('Drawer Header'),
+      //         decoration: BoxDecoration(
+      //           color: Colors.blue,
+      //         ),
+      //       ),
+      //       ListTile(
+      //         title: Text('Item 1'),
+      //         onTap: () {
+      //           Navigator.pop(context);
+      //         },
+      //       ),
+      //       ListTile(
+      //         title: Text('Item 2'),
+      //         onTap: () {
+      //           Navigator.pop(context);
+      //         },
+      //       ),
+      //     ],
+      //   ),
+      // ),
     );
   }
 

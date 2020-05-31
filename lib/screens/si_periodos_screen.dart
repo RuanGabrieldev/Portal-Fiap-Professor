@@ -1,42 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:portal_fiap_professor/screens/infos_si_screen.dart';
+import 'package:portal_fiap_professor/screens/funcionalidades_screen.dart';
+import 'package:portal_fiap_professor/screens/turmas_screen.dart';
 
-import 'package:webview_flutter/webview_flutter.dart';
-
-class SiPeriodosScreen extends StatefulWidget {
-  SiPeriodosScreen({Key key, this.title}) : super(key: key);
-  final String title;
-
-  @override
-  _SiPeriodosScreen createState() => new _SiPeriodosScreen();
-}
-
-class Turmas {
-  final String title;
-  List<String> contents = [];
-
-  static final Map<String, String> endpoints = const {
-    "1° SIA": "https://github.com/",
-    "1° SIB": "https://www.google.com/",
-    "1° SIC": "https://flutter.dev/docs/get-started/install",
-    "1° SID": "https://developer.apple.com/swift/"
-  };
-
-  Turmas(this.title, this.contents);
-}
-
-final titles = [
-  'Matutino',
-  'Noturno',
-];
-
-List<Turmas> policies = [
-  new Turmas('Matutino', ['1° SIA', '1° SIB']),
-  new Turmas('Noturno', ['1° SIC', '1° SID']),
-];
-
-class _SiPeriodosScreen extends State<SiPeriodosScreen> {
+class SiPeriodosScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -45,7 +11,7 @@ class _SiPeriodosScreen extends State<SiPeriodosScreen> {
           backgroundColor: Color(0xFF000000),
           iconTheme: IconThemeData(color: Color(0xFFed145b)),
           title: Text(
-            '1° SI Períodos',
+            'Períodos',
             style: TextStyle(
               color: Color(0xFFed145b),
             ),
@@ -55,83 +21,77 @@ class _SiPeriodosScreen extends State<SiPeriodosScreen> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => InfosSiScreen()),
+                MaterialPageRoute(builder: (context) => TurmasScreen()),
               );
             },
           ),
         ),
-        body: new ListView.builder(
-          itemCount: policies.length,
-          itemBuilder: (context, i) {
-            return new ExpansionTile(
-              title: new Text(
-                policies[i].title,
-                style: new TextStyle(
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFFed145b),
-                ),
-              ),
-              children: <Widget>[
-                new Column(
-                  children: _buildExpandableContent(policies[i]),
-                ),
-              ],
-            );
-          },
+        body: ListView.builder(
+          itemBuilder: (BuildContext context, int index) =>
+              EntryItem(data[index], context),
+          itemCount: data.length,
         ),
-      ),
-    );
-  }
-
-  _buildExpandableContent(Turmas policies) {
-    List<Widget> columnContent = [];
-
-    for (String content in policies.contents)
-      columnContent.add(
-        new ListTile(
-            title: new Text(
-              content,
-              style: new TextStyle(
-                fontSize: 18.0,
-                color: Color(0xFFed145b),
-              ),
-            ),
-            onTap: () {
-              _openWebUrl(Turmas.endpoints[content], content);
-            }),
-      );
-
-    return columnContent;
-  }
-
-  _openWebUrl(String url, String title) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => GeneralWebScreen(url: url, item: title),
       ),
     );
   }
 }
 
-class GeneralWebScreen extends StatelessWidget {
-  final String url;
-  final String item;
+class Entry {
+  Entry(
+    this.title, [
+    this.children = const <Entry>[],
+  ]);
 
-  GeneralWebScreen({Key key, @required this.url, @required this.item})
-      : super(key: key);
+  final String title;
+  final List<Entry> children;
+}
+
+final List<Entry> data = <Entry>[
+  Entry(
+    'Matutino',
+    <Entry>[
+      Entry('1° SIA'),
+      Entry('1° SIB'),
+    ],
+  ),
+  Entry(
+    'Noturno',
+    <Entry>[
+      Entry('1° SIC'),
+      Entry('1° SID'),
+    ],
+  ),
+];
+
+class EntryItem extends StatelessWidget {
+  const EntryItem(this.entry, this.context);
+
+  final Entry entry;
+  final BuildContext context;
+
+  Widget _buildTiles(Entry root) {
+    if (root.children.isEmpty)
+      return new ListTile(
+        onTap: () {
+          Navigator.of(context).push(
+            new MaterialPageRoute(
+              builder: (context) {
+                return new FuncionalidadesScreen(periodo: root.title);
+              },
+            ),
+          );
+        },
+        title: new Text(root.title),
+      );
+    return new ExpansionTile(
+      key: new PageStorageKey<Entry>(root),
+      title: new Text(root.title),
+      children: root.children.map(_buildTiles).toList(),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(item),
-      ),
-      body: WebView(
-        initialUrl: url,
-        javascriptMode: JavascriptMode.unrestricted,
-      ),
-    );
+    return _buildTiles(entry);
   }
 }
