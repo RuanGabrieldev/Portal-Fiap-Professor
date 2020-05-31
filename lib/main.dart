@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portal_fiap_professor/screens/curso_selecao_screen.dart';
 
 import 'package:portal_fiap_professor/screens/infos_si_screen.dart';
 import 'package:portal_fiap_professor/screens/login_screen.dart';
@@ -12,10 +13,11 @@ void main() {
       ),
       routes: {
         "/" : (context) => LoginScreen(),
-        '/infos': (context) => InfosSiScreen(),
-        '/periodo':(context) => SiPeriodosScreen(),
+        "/cursos": (context) => CursoSelecaoScreen(),
+        "/infos": (context) => InfosSiScreen(),
+        "/periodo": (context) => SiPeriodosScreen(),
       },
-      initialRoute: "/infos",
+      initialRoute: "/",
     )
   );
 }

@@ -74,7 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     padding: const EdgeInsets.only(bottom: 50),
                     child: BtnPattern(
                       text: "Entrar",
-                      route: "/home",
+                      route: "/cursos",
                     ),
                   ),
 
