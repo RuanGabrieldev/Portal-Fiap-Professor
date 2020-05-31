@@ -3,7 +3,7 @@ import 'dart:convert';
 class MateriasModel {
   int idMaterias;
   String nome;
-  String quantidadeAula;
+  int quantidadeAula;
 
   MateriasModel({
     this.idMaterias,

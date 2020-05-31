@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:portal_fiap_professor/models/turmas_model.dart';
+import 'package:portal_fiap_professor/repository/turma_repository.dart';
 
 import 'package:portal_fiap_professor/screens/login_screen.dart';
 
 void main() {
+
+
   runApp(
     MaterialApp(
       theme: ThemeData(

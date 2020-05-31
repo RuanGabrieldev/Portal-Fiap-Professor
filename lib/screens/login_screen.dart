@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:portal_fiap_professor/components/btn_pattern.dart';
 import 'package:portal_fiap_professor/components/input_field.dart';
+import 'package:portal_fiap_professor/models/turmas_model.dart';
+import 'package:portal_fiap_professor/repository/turma_repository.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -10,6 +12,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
+
     return Container(
       padding: EdgeInsets.all(30),
       margin: EdgeInsets.only(top: 20),
@@ -17,7 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
       width: MediaQuery.of(context).size.width,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center, 
         children: <Widget>[
           Image.asset("fiaplogo.png"),
           SizedBox(

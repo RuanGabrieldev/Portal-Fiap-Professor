@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 class PresencaModel {
-  int idPreseca;
+  int idPresenca;
   String nomeAula;
   String dataAula;
   bool presente;
