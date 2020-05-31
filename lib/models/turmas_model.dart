@@ -2,8 +2,6 @@ import 'dart:convert';
 
 import 'package:portal_fiap_professor/models/alunos_model.dart';
 
-
-
 class TurmasModel {
   int idTurma;
   String tipoCurso;
@@ -19,25 +17,30 @@ class TurmasModel {
     this.alunos,
   });
 
-  factory TurmasModel.fromJson(String str) => TurmasModel.fromMap(json.decode(str));
+  factory TurmasModel.fromJson(String str) =>
+      TurmasModel.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
   factory TurmasModel.fromMap(Map<String, dynamic> json) => TurmasModel(
-    idTurma: json["idTurma"],
-    tipoCurso: json["TipoCurso"],
-    anoCurso: json["anoCurso"],
-    quantidaDeAlunos: json["quantidaDeAlunos"],
-    alunos: List<AlunosModel>.from(json["alunos"].map((x) => Aluno.fromMap(x))),
-  );
+        idTurma: (json["idTurma"] is String)
+            ? int.parse(json["idTurma"])
+            : json["idTurma"],
+        tipoCurso: json["TipoCurso"],
+        anoCurso: json["anoCurso"].toString(),
+        quantidaDeAlunos: json["quantidaDeAlunos"],
+        alunos: List<AlunosModel>.from(
+          json["alunos"].map((x) => Aluno.fromMap(x)),
+        ),
+      );
 
   Map<String, dynamic> toMap() => {
-    "idTurma": idTurma,
-    "TipoCurso": tipoCurso,
-    "anoCurso": anoCurso,
-    "quantidaDeAlunos": quantidaDeAlunos,
-    "alunos": List<dynamic>.from(alunos.map((x) => x.toMap())),
-  };
+        "idTurma": idTurma,
+        "TipoCurso": tipoCurso,
+        "anoCurso": anoCurso,
+        "quantidaDeAlunos": quantidaDeAlunos,
+        "alunos": List<dynamic>.from(alunos.map((x) => x.toMap())),
+      };
 }
 
 class Aluno {
@@ -58,18 +61,19 @@ class Aluno {
   String toJson() => json.encode(toMap());
 
   factory Aluno.fromMap(Map<String, dynamic> json) => Aluno(
-    rm: json["RM"],
-    foto: json["foto"],
-    nome: json["nome"],
-    presenca: List<Presenca>.from(json["presenca"].map((x) => Presenca.fromMap(x))),
-  );
+        rm: json["RM"],
+        foto: json["foto"],
+        nome: json["nome"],
+        presenca: List<Presenca>.from(
+            json["presenca"].map((x) => Presenca.fromMap(x))),
+      );
 
   Map<String, dynamic> toMap() => {
-    "RM": rm,
-    "foto": foto,
-    "nome": nome,
-    "presenca": List<dynamic>.from(presenca.map((x) => x.toMap())),
-  };
+        "RM": rm,
+        "foto": foto,
+        "nome": nome,
+        "presenca": List<dynamic>.from(presenca.map((x) => x.toMap())),
+      };
 }
 
 class Presenca {
@@ -92,18 +96,18 @@ class Presenca {
   String toJson() => json.encode(toMap());
 
   factory Presenca.fromMap(Map<String, dynamic> json) => Presenca(
-    idPreseca: json["idPreseca"],
-    nomeAula: json["nomeAula"],
-    dataAula: json["dataAula"],
-    presente: json["presente"],
-    comentarios: json["Comentarios"],
-  );
+        idPreseca: json["idPreseca"],
+        nomeAula: json["nomeAula"],
+        dataAula: json["dataAula"],
+        presente: json["presente"],
+        comentarios: json["Comentarios"],
+      );
 
   Map<String, dynamic> toMap() => {
-    "idPreseca": idPreseca,
-    "nomeAula": nomeAula,
-    "dataAula": dataAula,
-    "presente": presente,
-    "Comentarios": comentarios,
-  };
+        "idPreseca": idPreseca,
+        "nomeAula": nomeAula,
+        "dataAula": dataAula,
+        "presente": presente,
+        "Comentarios": comentarios,
+      };
 }
