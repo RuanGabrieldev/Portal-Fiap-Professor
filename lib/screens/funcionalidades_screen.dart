@@ -43,22 +43,33 @@ class _FuncionalidadesScreen extends State<FuncionalidadesScreen> {
         crossAxisCount: 2,
         children: <Widget>[
           MaterialButton(
+            elevation: 0,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
+              // borderRadius: BorderRadius.circular(20),
               side: BorderSide(
                 color: Color(0xFFed145b),
-                width: 2,
+                width: 3,
               ),
             ),
             color: Colors.white,
-            child: const Text(
-              "Lista de presença",
-              style: TextStyle(
-                fontSize: 25.0,
-                // fontWeight: FontWeight.bold,
-                color: Color(0xFFed145b),
-              ),
-              textAlign: TextAlign.center,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Icon(
+                  Icons.format_list_numbered,
+                  color: Color(0xFFed145b),
+                  size: 60.0,
+                ),
+                Text(
+                  "Lista de presença",
+                  style: TextStyle(
+                    fontSize: 22.0,
+                    color: Color(0xFF949494),
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ],
             ),
             onPressed: () async {
               Navigator.push(
@@ -68,22 +79,33 @@ class _FuncionalidadesScreen extends State<FuncionalidadesScreen> {
             },
           ),
           MaterialButton(
+            elevation: 0,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
+              // borderRadius: BorderRadius.circular(20),
               side: BorderSide(
                 color: Color(0xFFed145b),
-                width: 2,
+                width: 3,
               ),
             ),
             color: Colors.white,
-            child: const Text(
-              "Entrega de trabalhos",
-              style: TextStyle(
-                fontSize: 25.0,
-                // fontWeight: FontWeight.bold,
-                color: Color(0xFFed145b),
-              ),
-              textAlign: TextAlign.center,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Icon(
+                  Icons.save_alt,
+                  color: Color(0xFFed145b),
+                  size: 60.0,
+                ),
+                Text(
+                  "Entrega de trabalhos",
+                  style: TextStyle(
+                    fontSize: 22.0,
+                    color: Color(0xFF949494),
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ],
             ),
             onPressed: () async {
               Navigator.push(

@@ -14,25 +14,25 @@ class _TurmasScreen extends State<TurmasScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Color(0xFF000000),
-          iconTheme: IconThemeData(color: Color(0xFFed145b)),
-          title: Text(
-            'Info',
-            style: TextStyle(
-              color: Color(0xFFed145b),
-            ),
-          ),
-          leading: new IconButton(
-            icon: new Icon(Icons.arrow_back),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => CursoSelecaoScreen()),
-              );
-            },
+      appBar: AppBar(
+        backgroundColor: Color(0xFF000000),
+        iconTheme: IconThemeData(color: Color(0xFFed145b)),
+        title: Text(
+          'Info',
+          style: TextStyle(
+            color: Color(0xFFed145b),
           ),
         ),
+        leading: new IconButton(
+          icon: new Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => CursoSelecaoScreen()),
+            );
+          },
+        ),
+      ),
       // body: FutureBuilder<List>(
       //   future: TurmaRepository().findAll(),
       //   builder: (context, snapshot) {
@@ -61,22 +61,36 @@ class _TurmasScreen extends State<TurmasScreen> {
         crossAxisCount: 2,
         children: <Widget>[
           MaterialButton(
+            elevation: 0,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
+              // borderRadius: BorderRadius.circular(20),
               side: BorderSide(
                 color: Color(0xFFed145b),
-                width: 2,
+                width: 3,
               ),
             ),
             color: Colors.white,
-            child: const Text(
-              "1° SI",
-              style: TextStyle(
-                fontSize: 40.0,
-                // fontWeight: FontWeight.bold,
-                color: Color(0xFFed145b),
-              ),
-              textAlign: TextAlign.center,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  "1",
+                  style: TextStyle(
+                    fontSize: 80.0,
+                    color: Color(0xFFed145b),
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                Text(
+                  "ANO",
+                  style: TextStyle(
+                    fontSize: 25.0,
+                    color: Color(0xFFed145b),
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ],
             ),
             onPressed: () async {
               Navigator.push(
@@ -86,22 +100,36 @@ class _TurmasScreen extends State<TurmasScreen> {
             },
           ),
           MaterialButton(
+            elevation: 0,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
+              // borderRadius: BorderRadius.circular(20),
               side: BorderSide(
                 color: Color(0xFFed145b),
-                width: 2,
+                width: 3,
               ),
             ),
             color: Colors.white,
-            child: const Text(
-              "2° SI",
-              style: TextStyle(
-                fontSize: 40.0,
-                // fontWeight: FontWeight.bold,
-                color: Color(0xFFed145b),
-              ),
-              textAlign: TextAlign.center,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  "2",
+                  style: TextStyle(
+                    fontSize: 80.0,
+                    color: Color(0xFFed145b),
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                Text(
+                  "ANO",
+                  style: TextStyle(
+                    fontSize: 25.0,
+                    color: Color(0xFFed145b),
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ],
             ),
             onPressed: () async {
               Navigator.push(
@@ -111,22 +139,36 @@ class _TurmasScreen extends State<TurmasScreen> {
             },
           ),
           MaterialButton(
+            elevation: 0,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
+              // borderRadius: BorderRadius.circular(20),
               side: BorderSide(
                 color: Color(0xFFed145b),
-                width: 2,
+                width: 3,
               ),
             ),
             color: Colors.white,
-            child: const Text(
-              "3° SI",
-              style: TextStyle(
-                fontSize: 40.0,
-                // fontWeight: FontWeight.bold,
-                color: Color(0xFFed145b),
-              ),
-              textAlign: TextAlign.center,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  "3",
+                  style: TextStyle(
+                    fontSize: 80.0,
+                    color: Color(0xFFed145b),
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                Text(
+                  "ANO",
+                  style: TextStyle(
+                    fontSize: 25.0,
+                    color: Color(0xFFed145b),
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ],
             ),
             onPressed: () async {
               Navigator.push(
@@ -136,22 +178,36 @@ class _TurmasScreen extends State<TurmasScreen> {
             },
           ),
           MaterialButton(
+            elevation: 0,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
+              // borderRadius: BorderRadius.circular(20),
               side: BorderSide(
                 color: Color(0xFFed145b),
-                width: 2,
+                width: 3,
               ),
             ),
             color: Colors.white,
-            child: const Text(
-              "4° SI",
-              style: TextStyle(
-                fontSize: 40.0,
-                // fontWeight: FontWeight.bold,
-                color: Color(0xFFed145b),
-              ),
-              textAlign: TextAlign.center,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  "4",
+                  style: TextStyle(
+                    fontSize: 80.0,
+                    color: Color(0xFFed145b),
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                Text(
+                  "ANO",
+                  style: TextStyle(
+                    fontSize: 25.0,
+                    color: Color(0xFFed145b),
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ],
             ),
             onPressed: () async {
               Navigator.push(

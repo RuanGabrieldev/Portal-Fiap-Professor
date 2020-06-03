@@ -29,22 +29,33 @@ class _CursoSelecaoScreen extends State<CursoSelecaoScreen> {
         crossAxisCount: 2,
         children: <Widget>[
           MaterialButton(
+            elevation: 0,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
+              // borderRadius: BorderRadius.circular(20),
               side: BorderSide(
                 color: Color(0xFFed145b),
-                width: 2,
+                width: 3,
               ),
             ),
             color: Colors.white,
-            child: const Text(
-              "Sistemas da Informação",
-              style: TextStyle(
-                fontSize: 25.0,
-                // fontWeight: FontWeight.bold,
-                color: Color(0xFFed145b),
-              ),
-              textAlign: TextAlign.center,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Icon(
+                  Icons.videogame_asset,
+                  color: Color(0xFFed145b),
+                  size: 60.0,
+                ),
+                Text(
+                  "Sistemas da Informação",
+                  style: TextStyle(
+                    fontSize: 22.0,
+                    color: Color(0xFF949494),
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ],
             ),
             onPressed: () async {
               Navigator.push(
@@ -54,22 +65,33 @@ class _CursoSelecaoScreen extends State<CursoSelecaoScreen> {
             },
           ),
           MaterialButton(
+            elevation: 0,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
+              // borderRadius: BorderRadius.circular(20),
               side: BorderSide(
                 color: Color(0xFFed145b),
-                width: 2,
+                width: 3,
               ),
             ),
             color: Colors.white,
-            child: const Text(
-              "Engenharia da Computação",
-              style: TextStyle(
-                fontSize: 25.0,
-                // fontWeight: FontWeight.bold,
-                color: Color(0xFFed145b),
-              ),
-              textAlign: TextAlign.center,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Icon(
+                  Icons.computer,
+                  color: Color(0xFFed145b),
+                  size: 60.0,
+                ),
+                Text(
+                  "Engenharia da Computação",
+                  style: TextStyle(
+                    fontSize: 22.0,
+                    color: Color(0xFF949494),
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ],
             ),
             onPressed: () async {
               Navigator.push(
@@ -79,22 +101,33 @@ class _CursoSelecaoScreen extends State<CursoSelecaoScreen> {
             },
           ),
           MaterialButton(
+            elevation: 0,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
+              // borderRadius: BorderRadius.circular(20),
               side: BorderSide(
                 color: Color(0xFFed145b),
-                width: 2,
+                width: 3,
               ),
             ),
             color: Colors.white,
-            child: const Text(
-              "Jogos Digitais",
-              style: TextStyle(
-                fontSize: 25.0,
-                // fontWeight: FontWeight.bold,
-                color: Color(0xFFed145b),
-              ),
-              textAlign: TextAlign.center,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Icon(
+                  Icons.queue_play_next,
+                  color: Color(0xFFed145b),
+                  size: 60.0,
+                ),
+                Text(
+                  "Jogos Digitais",
+                  style: TextStyle(
+                    fontSize: 22.0,
+                    color: Color(0xFF949494),
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ],
             ),
             onPressed: () async {
               Navigator.push(
