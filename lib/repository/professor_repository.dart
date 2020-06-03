@@ -1,4 +1,4 @@
-import 'package:portal_fiap_professor/models/Professor_model.dart';
+import 'package:portal_fiap_professor/models/professor_model.dart';
 import 'package:portal_fiap_professor/models/turmas_model.dart';
 import 'package:portal_fiap_professor/repository/database_helper.dart';
 import 'package:sqflite/sqflite.dart';
@@ -6,7 +6,7 @@ import 'package:sqflite/sqflite.dart';
 class ProfessorRepository {
 
   final String _tabela = "professoresModel";
-  final String _idPf = "id_pf";
+  final String _idPf = "id_professor";
   final String _foto = "foto";
   final String _nome = "nome_professor";
 
@@ -20,15 +20,15 @@ class ProfessorRepository {
 
   Future<ProfessorModel> saveProfessor(ProfessorModel professoresModel) async{
     var connection = await _databaseHelper.connection;
-    professoresModel.rm = await connection.insert(_tabela, professoresModel.toMap());
+    professoresModel.pf = await connection.insert(_tabela, professoresModel.toMap());
     return professoresModel;
   }
 
-  Future<ProfessorModel> getProfessor(int id) async{
+  Future<ProfessorModel> getProfessor(String id) async{
     var connection = await _databaseHelper.connection;
     List<Map> professores = await connection.query(_tabela, 
-    columns: [_idPf, _foto, _nome],
-     where: "$_idPf = ?",
+    columns: [_idPf, _foto, _nome, "login_id"],
+     where: "login_id = ?",
      whereArgs: [id]);
      return professores.length > 0 ? ProfessorModel.fromMap(professores.first) : null;
   }

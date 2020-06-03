@@ -5,7 +5,7 @@ import 'package:sqflite/sqflite.dart';
 class AlunoRepository {
 
   final String _tabela = "alunosModel";
-  final String _idRm = "id_rm";
+  final String _idRm = "id_aluno";
   final String _foto = "foto";
   final String _nome = "nome";
   final String _turma = "turma_id";
@@ -24,11 +24,11 @@ class AlunoRepository {
     return alunosModel;
   }
 
-  Future<AlunosModel> getAluno(int id) async{
+  Future<AlunosModel> getAluno(String id) async{
     var connection = await _databaseHelper.connection;
     List<Map> alunos = await connection.query(_tabela, 
-    columns: [_idRm, _foto, _nome, _turma],
-     where: "$_idRm = ?",
+    columns: [_idRm, _foto, _nome, _turma, "login_id"],
+     where: "login_id = ?",
      whereArgs: [id]);
      return alunos.length > 0 ? AlunosModel.fromMap(alunos.first) : null;
   }

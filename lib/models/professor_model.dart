@@ -24,11 +24,11 @@ class ProfessorModel {
   String toJson() => json.encode(toMap());
 
   factory ProfessorModel.fromMap(Map<String, dynamic> json) => ProfessorModel(
-    pf: json["pf"],
-    nomeProfessor: json["nomeProfessor"],
+    pf: json["id_professor"],
+    nomeProfessor: json["nome_professor"],
     foto: json["foto"],
-    turmas: List<TurmasModel>.from(json["turmas"].map((x) => TurmasModel.fromMap(x))),
-    materias: List<MateriasModel>.from(json["materias"].map((x) => MateriasModel.fromMap(x))),
+    turmas: null,
+    materias: null,
   );
 
   Map<String, dynamic> toMap() => {

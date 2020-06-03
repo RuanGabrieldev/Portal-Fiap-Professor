@@ -27,11 +27,11 @@ class DatabaseHelper {
 
   Future<Database> _createDatabase() async {
     String databasesPath = await getDatabasesPath();
-    String dbPath = join(databasesPath, 'cursosnac.db');
+    String dbPath = join(databasesPath, 'nacflutter.db');
 
     var database = await openDatabase(
       dbPath,
-      version: 3,
+      version: 5,
       onCreate: _createTables,
     );
 
@@ -47,11 +47,17 @@ class DatabaseHelper {
       CREATE TABLE turmasModel (
         id_turma INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
         tipo_curso TEXT,
+        nome_turma TEXT,
         ano_curso TEXT,
-        turno_curso TEXT
+        turno_curso TEXT,
+        professor_id INTEGER,
+        FOREIGN KEY(professor_id) REFERENCES professoresModel(id_professor)
       )
       ''',
     );
+
+    
+
 
      await database.execute(
       '''
@@ -190,15 +196,122 @@ class DatabaseHelper {
       INSERT INTO turmasModel (
         id_turma,
         tipo_curso,
+        nome_turma,
         ano_curso,
-        turno_curso) VALUES(
+        turno_curso,
+        professor_id
+        ) VALUES(
           1,
           "Sistemas de Informação",
+          "SI-B",
           "Terceiro Ano - Quinto Semestre",
-          "Noturno"
+          "Noturno",
+          1
         )
       ''',
     );
+
+     await database.execute(
+      '''
+      INSERT INTO turmasModel (
+        id_turma,
+        tipo_curso,
+        nome_turma,
+        ano_curso,
+        turno_curso,
+        professor_id
+        ) VALUES(
+          2,
+          "Sistemas de Informação",
+          "SI-S",
+          "Terceiro Ano - Quinto Semestre",
+          "Noturno",
+          1
+        )
+      ''',
+    );
+     await database.execute(
+      '''
+      INSERT INTO turmasModel (
+        id_turma,
+        tipo_curso,
+        nome_turma,
+        ano_curso,
+        turno_curso,
+        professor_id
+        ) VALUES(
+          3,
+          "Sistemas de Informação",
+          "SI-R",
+          "Terceiro Ano - Quinto Semestre",
+          "Noturno",
+          1
+        )
+      ''',
+    );
+     await database.execute(
+      '''
+      INSERT INTO turmasModel (
+        id_turma,
+        tipo_curso,
+        nome_turma,
+        ano_curso,
+        turno_curso,
+        professor_id
+        ) VALUES(
+          4,
+          "Sistemas de Informação",
+          "SI-A",
+          "Primeiro ano - Segundo Semestre",
+          "Diurno",
+          1
+        )
+      ''',
+    );
+
+      await database.execute(
+      '''
+      INSERT INTO turmasModel (
+        id_turma,
+        tipo_curso,
+        nome_turma,
+        ano_curso,
+        turno_curso,
+        professor_id
+        ) VALUES(
+          5,
+          "Jogos Digitais",
+          "JG-A",
+          "Segundo ano- Quarto Semestre",
+          "Diurno",
+          1
+        )
+      ''',
+    );
+
+
+  await database.execute(
+      '''
+      INSERT INTO turmasModel (
+        id_turma,
+        tipo_curso,
+        nome_turma,
+        ano_curso,
+        turno_curso,
+        professor_id
+        ) VALUES(
+          6,
+          "Engenharia da Computação",
+          "EC-S",
+          "Terceiro Ano - Quinto Semestre",
+          "Noturno",
+          1
+        )
+      ''',
+    );
+
+    
+    
 
     await database.execute(
       '''

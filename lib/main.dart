@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:portal_fiap_professor/models/turmas_model.dart';
 import 'package:portal_fiap_professor/repository/turma_repository.dart';
+import 'package:portal_fiap_professor/screens/curso_screen.dart';
 
 import 'package:portal_fiap_professor/screens/login_screen.dart';
 import 'package:portal_fiap_professor/screens/teste_screen.dart';
+import 'package:portal_fiap_professor/screens/turma_screen.dart';
 
 void main() {
 
@@ -15,7 +17,8 @@ void main() {
       ),
       routes: {
         "/" : (context) => LoginScreen(),
-        "/teste" : (context) => TesteScreen(),
+        "/turmas" : (context) => TurmasScreen(),
+        "/cursos" : (context) => CursoSelecaoScreen(),
       },
       initialRoute: "/",
     )
