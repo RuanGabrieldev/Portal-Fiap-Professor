@@ -1,11 +1,15 @@
 import 'dart:convert';
 
+import 'package:portal_fiap_professor/models/alunos_model.dart';
+import 'package:portal_fiap_professor/repository/aluno_repository.dart';
+
 class PresencaModel {
   int idPresenca;
   String nomeAula;
   String dataAula;
   bool presente;
   String comentarios;
+  AlunosModel alunosModel;
 
   PresencaModel({
     this.idPresenca,
@@ -13,9 +17,11 @@ class PresencaModel {
     this.dataAula,
     this.presente,
     this.comentarios,
+    this.alunosModel,
   });
 
-  factory PresencaModel.fromJson(String str) => PresencaModel.fromMap(json.decode(str));
+  factory PresencaModel.fromJson(String str) =>
+      PresencaModel.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 

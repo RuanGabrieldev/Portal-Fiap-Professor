@@ -4,6 +4,7 @@ import 'package:portal_fiap_professor/models/presenca_model.dart';
 import 'package:portal_fiap_professor/models/turmas_model.dart';
 import 'package:portal_fiap_professor/repository/turma_repository.dart';
  
+
 class AlunosModel {
   int rm;
   String foto;
@@ -11,7 +12,6 @@ class AlunosModel {
   List<PresencaModel> presenca;
   TurmasModel turmasModel;
   
- 
   AlunosModel({
     this.rm,
     this.foto,
@@ -40,11 +40,7 @@ class AlunosModel {
         turmasModel: null,
       );
   }
-
-
-
-
-
+  
   Map<String, dynamic> toMap() => {
         "RM": rm,
         "foto": foto,
@@ -81,6 +77,7 @@ class Presenca {
         comentarios: json["Comentarios"],
       );
  
+
   Map<String, dynamic> toMap() => {
         "idPreseca": idPreseca,
         "nomeAula": nomeAula,
@@ -89,3 +86,4 @@ class Presenca {
         "Comentarios": comentarios,
       };
 }
+

@@ -1,5 +1,4 @@
 import 'package:portal_fiap_professor/models/Professor_model.dart';
-import 'package:portal_fiap_professor/models/turmas_model.dart';
 import 'package:portal_fiap_professor/repository/database_helper.dart';
 import 'package:sqflite/sqflite.dart';
  
@@ -20,7 +19,7 @@ class ProfessorRepository {
 
   Future<ProfessorModel> saveProfessor(ProfessorModel professoresModel) async{
     var connection = await _databaseHelper.connection;
-    professoresModel.rm = await connection.insert(_tabela, professoresModel.toMap());
+    professoresModel.pf = await connection.insert(_tabela, professoresModel.toMap());
     return professoresModel;
   }
 

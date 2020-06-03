@@ -1,9 +1,5 @@
 import 'dart:convert';
 
-import 'package:portal_fiap_professor/models/alunos_model.dart';
-
-
-
 class TurmasModel {
   int idTurma;
   String tipoCurso;
@@ -17,7 +13,8 @@ class TurmasModel {
     this.turnoCurso,
   });
 
-  factory TurmasModel.fromJson(String str) => TurmasModel.fromMap(json.decode(str));
+  factory TurmasModel.fromJson(String str) =>
+      TurmasModel.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
