@@ -2,6 +2,7 @@ import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
 class DatabaseHelper {
+
   // Instancia do SQFLite Database
   static Database _database;
 
@@ -13,7 +14,7 @@ class DatabaseHelper {
     return _instance;
   }
 
-  // Construtor nomeado
+  // Construtor nomeado 
   DatabaseHelper._internal();
 
   // Abre conexão com o banco
@@ -26,11 +27,11 @@ class DatabaseHelper {
 
   Future<Database> _createDatabase() async {
     String databasesPath = await getDatabasesPath();
-    String dbPath = join(databasesPath, 'portal.db');
+    String dbPath = join(databasesPath, 'cursosnac.db');
 
     var database = await openDatabase(
       dbPath,
-      version: 1,
+      version: 3,
       onCreate: _createTables,
     );
 
@@ -38,64 +39,232 @@ class DatabaseHelper {
   }
 
   void _createTables(Database database, int version) async {
-    await database.execute(
-      '''
-      DROP TABLE PresencaModel
-    ''',
-    );
+    // Criando a tabela de Cursos
+   
 
     await database.execute(
       '''
-      DROP TABLE AlunosModel
-    ''',
-    );
-
-    await database.execute(
-      '''
-      DROP TABLE TurmasModel
-    ''',
-    );
-
-    await database.execute(
-      '''
-      CREATE TABLE PresencaModel (
-        idPreseca INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-        nomeAula TEXT,
-        dataAula TEXT,
-        presente INTEGER,
-        comentarios TEXT,
-        rm INTEGER,
-        FOREIGN KEY (rm)
-          REFERENCES AlunosModel (rm)
+      CREATE TABLE turmasModel (
+        id_turma INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+        tipo_curso TEXT,
+        ano_curso TEXT,
+        turno_curso TEXT
       )
       ''',
     );
 
-    await database.execute(
+     await database.execute(
       '''
-      CREATE TABLE AlunosModel (
-        rm INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+      CREATE TABLE alunosModel (
+        id_aluno INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
         foto TEXT,
         nome TEXT,
-        presenca INTEGER,
-        idTurma INTEGER,
-        FOREIGN KEY (presenca)
-          REFERENCES PresencaModel (idPreseca),
-        FOREIGN KEY (idTurma)
-          REFERENCES TurmasModel (idTurma)
+        turma_id INTEGER,
+        login_id TEXT,
+        FOREIGN KEY(turma_id) REFERENCES turmasModel(id_turma),
+        FOREIGN KEY(login_id) REFERENCES turmasModel(id_login)
       )
       ''',
     );
 
     await database.execute(
       '''
-      CREATE TABLE TurmasModel (
-        idTurma INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-        tipoCurso TEXT,
-        anoCurso TEXT,
-        quantidaDeAlunos INTEGER
+      CREATE TABLE presencasModel (
+        id_presenca INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+        nome_aula TEXT,
+        data_aula TEXT,
+        presente INTEGER,
+        comentarios TEXT,
+        aluno INTEGER,
+        FOREIGN KEY(aluno) REFERENCES alunosModel(id_aluno)
       )
       ''',
     );
+    await database.execute(
+      '''
+      CREATE TABLE materiasModel (
+        id_materia INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+        nome_materia TEXT,
+        quantidade_aula INTEGER,
+        professor_id INTEGER,
+        turma_id INTEGER,
+        FOREIGN KEY(professor_id) REFERENCES professoresModel(id),
+        FOREIGN KEY(turma_id) REFERENCES turmasModel(id_turma)
+      )
+      ''',
+    );
+
+    await database.execute(
+      '''
+      CREATE TABLE loginsModel (
+        login TEXT PRIMARY KEY NOT NULL,
+        senha TEXT,
+        nivel_acesso INTEGER
+      )
+      ''',
+    );
+
+    await database.execute(
+      '''
+      CREATE TABLE professoresModel (
+        id_professor INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+        nome_professor TEXT,
+        foto TEXT,
+        login_id TEXT,
+        FOREIGN KEY(login_id) REFERENCES loginsModel(id_login)
+      )
+      ''',
+    );
+
+    await database.execute(
+      '''
+      CREATE TABLE entregasModel (
+        id_entrega INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+        nome_trabalho TEXT,
+        tema TEXT,
+        descricao TEXT,
+        integrantes_max INTEGER,
+        integrantes_min INTEGER,
+        data_entrega TEXT,
+        materia_id TEXT,
+        FOREIGN KEY(materia_id) REFERENCES materiasModel(id_materia)
+      )
+      ''',
+    );
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+      await database.execute(
+        '''
+        INSERT INTO loginsModel (
+          login,
+          senha,
+          nivel_acesso
+        ) VALUES(
+          "pf2020",
+          "123456",
+          2
+        )
+        ''',
+      );
+
+      await database.execute(
+        '''
+        INSERT INTO loginsModel (
+          login,
+          senha,
+          nivel_acesso
+        ) VALUES(
+          "rm81679",
+          "123456",
+          1
+        )
+        ''',
+      );
+ 
+    await database.execute(
+      '''
+      INSERT INTO professoresModel (
+        id_professor,
+        nome_professor,
+        foto,
+        login_id
+      ) VALUES(
+          1,
+          "Flávio Moreni",
+          "flavio.png",
+          "pf2020"
+      )
+
+      ''',
+    );
+
+     await database.execute(
+      '''
+      INSERT INTO turmasModel (
+        id_turma,
+        tipo_curso,
+        ano_curso,
+        turno_curso) VALUES(
+          1,
+          "Sistemas de Informação",
+          "Terceiro Ano - Quinto Semestre",
+          "Noturno"
+        )
+      ''',
+    );
+
+    await database.execute(
+      '''
+      INSERT INTO alunosModel (
+        id_aluno,
+        foto,
+        nome ,
+        turma_id,
+        login_id) VALUES(
+          81679,
+          "ruan.png",
+          "Ruan Gabriel",
+          1,
+          "rm81679"
+        )
+       
+      ''',
+    );
+
+     await database.execute(
+      '''
+      INSERT INTO materiasModel (
+        id_materia,
+        nome_materia,
+        quantidade_aula,
+        professor_id,
+        turma_id) VALUES(
+          1,
+          "DESENVOLVIMENTO CROSS PLATFORM",
+          48,
+          1,
+          1
+        ) 
+      ''',
+    );
+
+
+
+
+    await database.execute(
+      '''
+      INSERT INTO entregasModel (
+        id_entrega,
+        nome_trabalho,
+        tema,
+        descricao,
+        integrantes_max,
+        integrantes_min,
+        data_entrega,
+        materia_id
+      ) 
+      VALUES(
+      1,
+      "Desenvolvimento da interface de gerenciamento da FIAP",
+      "Flutter + SQFlite",
+      "Nac 2 para a matéria de desenvolvimento Cross Platform",
+      5,
+      1,
+      "31/05/2020",
+      1
+      )
+      ''',
+    );
+
+
+   
+
   }
 }

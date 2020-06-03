@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+
+import 'package:portal_fiap_professor/screens/login_screen.dart';
+import 'package:portal_fiap_professor/screens/teste_screen.dart';
 import 'package:portal_fiap_professor/screens/curso_selecao_screen.dart';
 import 'package:portal_fiap_professor/screens/funcionalidades_screen.dart';
 
-import 'package:portal_fiap_professor/screens/login_screen.dart';
 import 'package:portal_fiap_professor/screens/si_periodos_screen.dart';
 import 'package:portal_fiap_professor/screens/turmas_screen.dart';
 
 void main() {
+
+
   runApp(
     MaterialApp(
       theme: ThemeData(
@@ -14,6 +18,7 @@ void main() {
       ),
       routes: {
         "/" : (context) => LoginScreen(),
+        "/teste" : (context) => TesteScreen(),
         "/cursos": (context) => CursoSelecaoScreen(),
         "/infos": (context) => TurmasScreen(),
         "/periodo": (context) => SiPeriodosScreen(),
