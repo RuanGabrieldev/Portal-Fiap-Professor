@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:portal_fiap_professor/screens/pesquisa_trabalho_screen.dart';
 import 'package:portal_fiap_professor/screens/presenca_screen.dart';
 import 'package:portal_fiap_professor/screens/si_periodos_screen.dart';
 import 'package:portal_fiap_professor/screens/visu_entregaveis_screen.dart';
@@ -110,7 +111,7 @@ class _FuncionalidadesScreen extends State<FuncionalidadesScreen> {
             onPressed: () async {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => VisuEntregaveisScreen()),
+                MaterialPageRoute(builder: (context) => PesquisaTrabalhoScreen()),
               );
             },
           ),

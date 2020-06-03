@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class TelaEntreTrabalho extends StatefulWidget {
+class PesquisaTrabalhoScreen extends StatefulWidget {
   @override
-  _TelaEntreTrabalhoState createState() => _TelaEntreTrabalhoState();
+  _PesquisaTrabalhoScreen createState() => _PesquisaTrabalhoScreen();
 }
 
-class _TelaEntreTrabalhoState extends State<TelaEntreTrabalho> {
+class _PesquisaTrabalhoScreen extends State<PesquisaTrabalhoScreen> {
   GlobalKey<FormState> formKey = new GlobalKey<FormState>();
 
   @override
