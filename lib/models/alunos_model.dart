@@ -1,62 +1,46 @@
 import 'dart:convert';
- 
+
 import 'package:portal_fiap_professor/models/presenca_model.dart';
-import 'package:portal_fiap_professor/models/turmas_model.dart';
-import 'package:portal_fiap_professor/repository/turma_repository.dart';
- 
 
 class AlunosModel {
   int rm;
   String foto;
   String nome;
   List<PresencaModel> presenca;
-  TurmasModel turmasModel;
-  
-  AlunosModel({
-    this.rm,
-    this.foto,
-    this.nome,
-    this.presenca,
-    this.turmasModel
-  });
- 
+  int turmasModel;
+
+  AlunosModel({this.rm, this.foto, this.nome, this.presenca, this.turmasModel});
+
   factory AlunosModel.fromJson(String str) =>
       AlunosModel.fromMap(json.decode(str));
- 
-  String toJson() => json.encode(toMap());
- 
 
+  String toJson() => json.encode(toMap());
 
   factory AlunosModel.fromMap(Map<String, dynamic> json) {
-     TurmaRepository turmaRepository = TurmaRepository();
-     
-
-     return AlunosModel(
-        rm: json["RM"],
-        foto: json["foto"],
-        nome: json["nome"],
-        presenca: List<PresencaModel>.from(
-            json["presenca"]),
-        turmasModel: null,
-      );
+    return AlunosModel(
+      rm: json["RM"],
+      foto: json["foto"],
+      nome: json["nome"],
+      presenca: null,
+      turmasModel: json["turma_id"],
+    );
   }
-  
+
   Map<String, dynamic> toMap() => {
         "RM": rm,
         "foto": foto,
         "nome": nome,
-        "presenca": List<dynamic>.from(presenca.map((x) => x.toMap())),
         "turmasModel": turmasModel,
       };
 }
- 
+
 class Presenca {
   int idPreseca;
   String nomeAula;
   String dataAula;
   bool presente;
   String comentarios;
- 
+
   Presenca({
     this.idPreseca,
     this.nomeAula,
@@ -64,11 +48,11 @@ class Presenca {
     this.presente,
     this.comentarios,
   });
- 
+
   factory Presenca.fromJson(String str) => Presenca.fromMap(json.decode(str));
- 
+
   String toJson() => json.encode(toMap());
- 
+
   factory Presenca.fromMap(Map<String, dynamic> json) => Presenca(
         idPreseca: json["idPreseca"],
         nomeAula: json["nomeAula"],
@@ -76,7 +60,6 @@ class Presenca {
         presente: json["presente"],
         comentarios: json["Comentarios"],
       );
- 
 
   Map<String, dynamic> toMap() => {
         "idPreseca": idPreseca,
@@ -86,4 +69,3 @@ class Presenca {
         "Comentarios": comentarios,
       };
 }
-

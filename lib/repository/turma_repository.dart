@@ -6,9 +6,12 @@ class TurmaRepository {
 
   final String _tabela = "turmasModel";
   final String _idTurma = "id_turma";
+  final String _nomeCurso = "nome_turma";
   final String _tipoCurso = "tipo_curso";
   final String _anoCurso = "ano_curso";
   final String _turnoCurso = "turno_curso";
+  final String _profesorId = "professor_id";
+
 
   // Instancia do Database Helper
   DatabaseHelper _databaseHelper;
@@ -27,7 +30,7 @@ class TurmaRepository {
   Future<TurmasModel> getTurma(int id) async{
     var connection = await _databaseHelper.connection;
     List<Map> turma = await connection.query(_tabela, 
-    columns: [_idTurma, _tipoCurso, _anoCurso, _turnoCurso],
+    columns: [_idTurma, _tipoCurso, _anoCurso, _turnoCurso, _nomeCurso, _profesorId],
      where: "$_idTurma = ?",
      whereArgs: [id]);
      return turma.length > 0 ? TurmasModel.fromMap(turma.first) : null;
