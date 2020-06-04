@@ -1,13 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class TelaEntreTrabalho extends StatefulWidget {
+class CadastroTrabalho extends StatefulWidget {
   @override
-  _TelaEntreTrabalhoState createState() => _TelaEntreTrabalhoState();
+  _CadastroTrabalhoState createState() => _CadastroTrabalhoState();
 }
 
-class _TelaEntreTrabalhoState extends State<TelaEntreTrabalho> {
-  GlobalKey<FormState> formKey = new GlobalKey<FormState>();
+class _CadastroTrabalhoState extends State<CadastroTrabalho> {
+  GlobalKey<FormState> formKeyCadastro = new GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -18,16 +17,16 @@ class _TelaEntreTrabalhoState extends State<TelaEntreTrabalho> {
         centerTitle: true,
       ),
       backgroundColor: Colors.black,
-      body:SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.only(left: 20.0, right: 20.0, top: 10.0),
+      body: SingleChildScrollView(
+    child: Padding(
+    padding: EdgeInsets.only(left: 20.0, right: 20.0, top: 10.0),
           child: Column(
             children: <Widget>[
               Padding(
                 padding: EdgeInsets.only(left: 00.0),
                 child: Container(
                   child: Text(
-                    "Welcome Flavio",
+                    "Novo cadastro",
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 25.0,
@@ -35,36 +34,8 @@ class _TelaEntreTrabalhoState extends State<TelaEntreTrabalho> {
                   ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(top: 10.0, left: 00.0),
-                child: Container(
-                  height: 60.0,
-                  width: 300.0,
-                  child: RaisedButton(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    color: Colors.green,
-                    child: Text(
-                      "Cadastrar novo trabalho",
-                      style: TextStyle(color: Colors.white, fontSize: 19.0),
-                    ),
-                    onPressed: () {},
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 20.0, left: 00.0),
-                child: Text(
-                  "Pesquisar trabalho",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 25.0,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
               Form(
-                key: formKey,
+                key: formKeyCadastro,
                 child: Column(
                   children: <Widget>[
                     Padding(
@@ -72,28 +43,30 @@ class _TelaEntreTrabalhoState extends State<TelaEntreTrabalho> {
                       child: TextFormField(
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(30.0)),
                             borderSide: BorderSide(color: Colors.white),
                           ),
                           enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(30.0)),
                             borderSide:
-                            BorderSide(color: Colors.white, width: 2.0),
+                                BorderSide(color: Colors.white, width: 2.0),
                           ),
                           icon: Icon(
-                            Icons.code,
+                            Icons.text_fields,
                             color: Colors.deepPurple,
                           ),
-                          labelText: 'Digite o codigo',
+                          labelText: 'Nome da atividade',
                           labelStyle: TextStyle(color: Colors.white),
-                          hintText: 'Exemplo: 01234',
+                          hintText: 'Exemplo: Prova de flutter',
                           hintStyle: TextStyle(color: Colors.white),
                         ),
                         style: TextStyle(
                             color: Colors.deepPurpleAccent, fontSize: 20.0),
                         validator: (value) {
-                          if (int.parse(value) < 0) {
-                            return "Não pode ser numero negativo";
+                          if (value.isEmpty) {
+                            return "Favor informar um nome";
                           }
                           return null;
                         },
@@ -108,31 +81,31 @@ class _TelaEntreTrabalhoState extends State<TelaEntreTrabalho> {
                       padding: EdgeInsets.only(top: 10.0),
                       child: DropdownButtonFormField(
                         // Aqui estou cadastrando as opções
-                        items: [
-                          "2018",
-                          "2019",
-                          "2020",
-                          "2021"
-                        ]
+                        items: ["2018", "2019", "2020", "2021"]
                             .map((label) => DropdownMenuItem(
-                          //Coloamos a linha a baixo para montar o corpo e mostrar o texto de umas das opções
-                          child: Text(label),
-                          //salvando o valor
-                          value: label,
-                        ))
+                                  //Coloamos a linha a baixo para montar o corpo e mostrar o texto de umas das opções
+                                  child: Text(label),
+                                  //salvando o valor
+                                  value: label,
+                                ))
                             .toList(),
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(30.0)),
                             borderSide: BorderSide(color: Colors.white),
                           ),
                           enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(30.0)),
                             borderSide:
-                            BorderSide(color: Colors.white, width: 2.0),
+                                BorderSide(color: Colors.white, width: 2.0),
                           ),
-                          icon: Icon(Icons.date_range, color: Colors.deepPurpleAccent,),
-                          labelText: "Informe o ano",
+                          icon: Icon(
+                            Icons.date_range,
+                            color: Colors.deepPurpleAccent,
+                          ),
+                          labelText: "Data de entrega",
                           labelStyle: TextStyle(color: Colors.white),
                           hintText: "Escolha uma das opções",
                           hintStyle: TextStyle(color: Colors.white),
@@ -158,29 +131,31 @@ class _TelaEntreTrabalhoState extends State<TelaEntreTrabalho> {
                       padding: EdgeInsets.only(top: 10.0),
                       child: DropdownButtonFormField(
                         // Aqui estou cadastrando as opções
-                        items: [
-                          "Sistema de informação",
-                          "Engenharia",
-                          "Biologia"
-                        ]
-                            .map((label) => DropdownMenuItem(
-                          //Coloamos a linha a baixo para montar o corpo e mostrar o texto de umas das opções
-                          child: Text(label),
-                          //salvando o valor
-                          value: label,
-                        ))
-                            .toList(),
+                        items:
+                            ["Sistema de informação", "Engenharia", "Biologia"]
+                                .map((label) => DropdownMenuItem(
+                                      //Coloamos a linha a baixo para montar o corpo e mostrar o texto de umas das opções
+                                      child: Text(label),
+                                      //salvando o valor
+                                      value: label,
+                                    ))
+                                .toList(),
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(30.0)),
                             borderSide: BorderSide(color: Colors.white),
                           ),
                           enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(30.0)),
                             borderSide:
-                            BorderSide(color: Colors.white, width: 2.0),
+                                BorderSide(color: Colors.white, width: 2.0),
                           ),
-                          icon: Icon(Icons.border_all, color: Colors.deepPurpleAccent,),
+                          icon: Icon(
+                            Icons.border_all,
+                            color: Colors.deepPurpleAccent,
+                          ),
                           labelText: "Informe o curso",
                           labelStyle: TextStyle(color: Colors.white),
                           hintText: "Escolha uma das opções",
@@ -207,30 +182,30 @@ class _TelaEntreTrabalhoState extends State<TelaEntreTrabalho> {
                       padding: EdgeInsets.only(top: 10.0),
                       child: DropdownButtonFormField(
                         // Aqui estou cadastrando as opções
-                        items: [
-                          "3SIR",
-                          "3SIS",
-                          "3SIA",
-                          "3SIT"
-                        ]
+                        items: ["3SIR", "3SIS", "3SIA", "3SIT"]
                             .map((label) => DropdownMenuItem(
-                          //Coloamos a linha a baixo para montar o corpo e mostrar o texto de umas das opções
-                          child: Text(label),
-                          //salvando o valor
-                          value: label,
-                        ))
+                                  //Coloamos a linha a baixo para montar o corpo e mostrar o texto de umas das opções
+                                  child: Text(label),
+                                  //salvando o valor
+                                  value: label,
+                                ))
                             .toList(),
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(30.0)),
                             borderSide: BorderSide(color: Colors.white),
                           ),
                           enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(30.0)),
                             borderSide:
-                            BorderSide(color: Colors.white, width: 2.0),
+                                BorderSide(color: Colors.white, width: 2.0),
                           ),
-                          icon: Icon(Icons.bookmark, color: Colors.deepPurpleAccent,),
+                          icon: Icon(
+                            Icons.bookmark,
+                            color: Colors.deepPurpleAccent,
+                          ),
                           labelText: "Informe uma turma",
                           labelStyle: TextStyle(color: Colors.white),
                           hintText: "Escolha uma das opções",
@@ -257,29 +232,30 @@ class _TelaEntreTrabalhoState extends State<TelaEntreTrabalho> {
                       padding: EdgeInsets.only(top: 10.0),
                       child: DropdownButtonFormField(
                         // Aqui estou cadastrando as opções
-                        items: [
-                          "Flutter",
-                          "java",
-                          "C#"
-                        ]
+                        items: ["Flutter", "java", "C#"]
                             .map((label) => DropdownMenuItem(
-                          //Coloamos a linha a baixo para montar o corpo e mostrar o texto de umas das opções
-                          child: Text(label),
-                          //salvando o valor
-                          value: label,
-                        ))
+                                  //Coloamos a linha a baixo para montar o corpo e mostrar o texto de umas das opções
+                                  child: Text(label),
+                                  //salvando o valor
+                                  value: label,
+                                ))
                             .toList(),
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(30.0)),
                             borderSide: BorderSide(color: Colors.white),
                           ),
                           enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(30.0)),
                             borderSide:
-                            BorderSide(color: Colors.white, width: 2.0),
+                                BorderSide(color: Colors.white, width: 2.0),
                           ),
-                          icon: Icon(Icons.book, color: Colors.deepPurpleAccent,),
+                          icon: Icon(
+                            Icons.book,
+                            color: Colors.deepPurpleAccent,
+                          ),
                           labelText: "Informe a diciplina",
                           labelStyle: TextStyle(color: Colors.white),
                           hintText: "Escolha uma das opções",
@@ -307,13 +283,15 @@ class _TelaEntreTrabalhoState extends State<TelaEntreTrabalho> {
                       child: TextFormField(
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(30.0)),
                             borderSide: BorderSide(color: Colors.white),
                           ),
                           enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(30.0)),
                             borderSide:
-                            BorderSide(color: Colors.white, width: 2.0),
+                                BorderSide(color: Colors.white, width: 2.0),
                           ),
                           icon: Icon(
                             Icons.border_color,
@@ -337,6 +315,46 @@ class _TelaEntreTrabalhoState extends State<TelaEntreTrabalho> {
                       ),
                     ),
                     Padding(
+                      padding: EdgeInsets.only(top: 10.0),
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(30.0)),
+                            borderSide: BorderSide(color: Colors.white),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(30.0)),
+                            borderSide:
+                                BorderSide(color: Colors.white, width: 2.0),
+                          ),
+                          icon: Icon(
+                            Icons.textsms,
+                            color: Colors.deepPurple,
+                          ),
+                          labelText: 'Escreva uma descrição',
+                          labelStyle: TextStyle(color: Colors.white),
+                          hintText: 'Exemplo: Nesse vai incluir...',
+                          hintStyle: TextStyle(color: Colors.white),
+                        ),
+                        maxLines: 3,
+                        style: TextStyle(
+                            color: Colors.deepPurpleAccent, fontSize: 20.0),
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return "Favor escrever uma descrição";
+                          }
+                          return null;
+                        },
+                        //adicioanando o valor para nome
+                        onSaved: (value) {
+                          //onde salvar
+                        },
+                        keyboardType: TextInputType.text,
+                      ),
+                    ),
+                    Padding(
                       padding: EdgeInsets.only(top: 10.0, left: 00.0),
                       child: Container(
                         height: 60.0,
@@ -347,12 +365,11 @@ class _TelaEntreTrabalhoState extends State<TelaEntreTrabalho> {
                           ),
                           color: Colors.pinkAccent,
                           child: Text(
-                            "Pesquisar",
-                            style: TextStyle(color: Colors.white, fontSize: 19.0),
+                            "Cadastrar",
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 19.0),
                           ),
-                          onPressed: () {
-                            
-                          },
+                          onPressed: () {},
                         ),
                       ),
                     ),
@@ -362,7 +379,7 @@ class _TelaEntreTrabalhoState extends State<TelaEntreTrabalho> {
             ],
           ),
         ),
-      )
+      ),
     );
   }
 }
