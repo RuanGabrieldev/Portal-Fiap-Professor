@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:portal_fiap_professor/screens/pesquisa_trabalho_screen.dart';
 import 'package:portal_fiap_professor/screens/presenca_screen.dart';
 import 'package:portal_fiap_professor/screens/si_periodos_screen.dart';
-import 'package:portal_fiap_professor/screens/visu_entregaveis_screen.dart';
 
 class FuncionalidadesScreen extends StatefulWidget {
   final String periodo;
