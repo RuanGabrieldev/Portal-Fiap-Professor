@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:portal_fiap_professor/screens/curso_selecao_screen.dart';
+import 'package:portal_fiap_professor/screens/curso_screen.dart';
 import 'package:portal_fiap_professor/screens/si_periodos_screen.dart';
 
 class TurmasScreen extends StatefulWidget {

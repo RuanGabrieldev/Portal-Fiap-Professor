@@ -1,5 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:portal_fiap_professor/models/entregas_model.dart';
+import 'package:portal_fiap_professor/repository/entrega_repository.dart';
+import 'package:portal_fiap_professor/screens/cadastro_trabalho.dart';
+import 'package:portal_fiap_professor/screens/view_trabalho.dart';
 
 class PesquisaTrabalhoScreen extends StatefulWidget {
   @override
@@ -7,7 +11,7 @@ class PesquisaTrabalhoScreen extends StatefulWidget {
 }
 
 class _PesquisaTrabalhoScreen extends State<PesquisaTrabalhoScreen> {
-  final codigo = TextEditingController();
+  TextEditingController codigo = TextEditingController();
 
   GlobalKey<FormState> formKey = new GlobalKey<FormState>();
 
@@ -15,57 +19,23 @@ class _PesquisaTrabalhoScreen extends State<PesquisaTrabalhoScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.pinkAccent,
-          title: Text("Cadastro de Trabalho/Prova"),
+          backgroundColor: Color(0xFF000000),
+          iconTheme: IconThemeData(color: Color(0xFFed145b)),
+          title: Text(
+            "Pesquisar Trabalho / Prova",
+            style: TextStyle(
+              color: Color(0xFFed145b),
+            ),
+          ),
           centerTitle: true,
         ),
-        backgroundColor: Colors.black,
+        // backgroundColor: Colors.black,
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.only(left: 20.0, right: 20.0, top: 10.0),
             child: Column(
               children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.only(left: 00.0),
-                  // child: Container(
-                  //   child: Text(
-                  //     "Welcome Flavio",
-                  //     style: TextStyle(
-                  //         color: Colors.white,
-                  //         fontSize: 25.0,
-                  //         fontWeight: FontWeight.bold),
-                  //   ),
-                  // ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: 10.0, left: 00.0),
-                  child: Container(
-                    height: 60.0,
-                    width: 300.0,
-                    child: RaisedButton(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      color: Colors.green,
-                      child: Text(
-                        "Cadastrar novo trabalho",
-                        style: TextStyle(color: Colors.white, fontSize: 19.0),
-                      ),
-                      onPressed: () {},
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: 40.0, bottom: 40.0),
-                  child: Text(
-                    "Pesquisar trabalho",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 25.0,
-                      // fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
+                Padding(padding: EdgeInsets.only(top: 40.0, bottom: 5.0)),
                 Form(
                   key: formKey,
                   child: Column(
@@ -76,40 +46,25 @@ class _PesquisaTrabalhoScreen extends State<PesquisaTrabalhoScreen> {
                           controller: codigo,
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(30.0)),
-                              borderSide: BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(30.0),
+                              ),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(30.0)),
-                              borderSide:
-                                  BorderSide(color: Colors.white, width: 2.0),
+                              borderSide: BorderSide(
+                                color: Color(0xFFed145b),
+                                width: 2.0,
+                              ),
                             ),
-                            icon: Icon(
-                              Icons.code,
-                              color: Colors.deepPurple,
-                            ),
+                            icon: Icon(Icons.code, color: Color(0xFFed145b)),
                             labelText: 'Digite o codigo',
-                            labelStyle: TextStyle(color: Colors.white),
-                            hintText: 'Exemplo: 01234',
-                            hintStyle: TextStyle(color: Colors.white),
+                            labelStyle: TextStyle(
+                                color: Color(0xFFed145b), fontSize: 20.0),
+                            hintText: 'Exemplo: 1',
                           ),
-                          style: TextStyle(
-                              color: Colors.deepPurpleAccent, fontSize: 20.0),
-                          // validator: (codigo) {
-                          //   if(int.parse(codigo) == null){
-                          //     return "o Campo Código não pode ser null";
-                          //   }
-                          //   if (int.parse(codigo) < 0) {
-                          //     return "Não pode ser numero negativo";
-                          //   }
-                          //   return null;
-                          // },
-                          //adicioanando o valor para nome
-                          // onSaved: (value) {
-                          //   //onde salvar
-                          // },
+                          style: TextStyle(fontSize: 20.0),
                           keyboardType: TextInputType.number,
                         ),
                       ),
@@ -126,34 +81,19 @@ class _PesquisaTrabalhoScreen extends State<PesquisaTrabalhoScreen> {
                                   ))
                               .toList(),
                           decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(30.0)),
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(30.0)),
-                              borderSide:
-                                  BorderSide(color: Colors.white, width: 2.0),
+                              borderSide: BorderSide(
+                                  color: Color(0xFFed145b), width: 2.0),
                             ),
-                            icon: Icon(
-                              Icons.date_range,
-                              color: Colors.deepPurpleAccent,
-                            ),
+                            icon: Icon(Icons.date_range,
+                                color: Color(0xFFed145b)),
                             labelText: "Informe o ano",
-                            labelStyle: TextStyle(color: Colors.white),
-                            hintText: "Escolha uma das opções",
-                            hintStyle: TextStyle(color: Colors.white),
+                            labelStyle: TextStyle(
+                                color: Color(0xFFed145b), fontSize: 20.0),
                           ),
-                          style: TextStyle(
-                              color: Colors.deepPurpleAccent, fontSize: 20.0),
-                          validator: (value) {
-                            if (value == null) {
-                              return "Favor selecionar um ano";
-                            }
-                            return null;
-                          },
+                          style: TextStyle(color: Colors.black, fontSize: 20.0),
                           onSaved: (value) {
                             //deve ser salvar
                           },
@@ -163,110 +103,6 @@ class _PesquisaTrabalhoScreen extends State<PesquisaTrabalhoScreen> {
                           },
                         ),
                       ),
-                      // Padding(
-                      //   padding: EdgeInsets.only(bottom: 40.0),
-                      //   child: DropdownButtonFormField(
-                      //     // Aqui estou cadastrando as opções
-                      //     items: [
-                      //       "Sistema de informação",
-                      //       "Engenharia",
-                      //       "Biologia"
-                      //     ]
-                      //         .map((label) => DropdownMenuItem(
-                      //               //Coloamos a linha a baixo para montar o corpo e mostrar o texto de umas das opções
-                      //               child: Text(label),
-                      //               //salvando o valor
-                      //               value: label,
-                      //             ))
-                      //         .toList(),
-                      //     decoration: InputDecoration(
-                      //       border: OutlineInputBorder(
-                      //         borderRadius:
-                      //             BorderRadius.all(Radius.circular(30.0)),
-                      //         borderSide: BorderSide(color: Colors.white),
-                      //       ),
-                      //       enabledBorder: OutlineInputBorder(
-                      //         borderRadius:
-                      //             BorderRadius.all(Radius.circular(30.0)),
-                      //         borderSide:
-                      //             BorderSide(color: Colors.white, width: 2.0),
-                      //       ),
-                      //       icon: Icon(
-                      //         Icons.border_all,
-                      //         color: Colors.deepPurpleAccent,
-                      //       ),
-                      //       labelText: "Informe o curso",
-                      //       labelStyle: TextStyle(color: Colors.white),
-                      //       hintText: "Escolha uma das opções",
-                      //       hintStyle: TextStyle(color: Colors.white),
-                      //     ),
-                      //     style: TextStyle(
-                      //         color: Colors.deepPurpleAccent, fontSize: 20.0),
-                      //     validator: (value) {
-                      //       if (value == null) {
-                      //         return "Favor selecionar um curso";
-                      //       }
-                      //       return null;
-                      //     },
-                      //     onSaved: (value) {
-                      //       //deve ser salvar
-                      //     },
-                      //     //segue a mesma ideia do onSaved
-                      //     onChanged: (value) {
-                      //       //deve ser salvo
-                      //     },
-                      //   ),
-                      // ),
-                      // Padding(
-                      //   padding: EdgeInsets.only(bottom: 40.0),
-                      //   child: DropdownButtonFormField(
-                      //     // Aqui estou cadastrando as opções
-                      //     items: ["3SIR", "3SIS", "3SIA", "3SIT"]
-                      //         .map((label) => DropdownMenuItem(
-                      //               //Coloamos a linha a baixo para montar o corpo e mostrar o texto de umas das opções
-                      //               child: Text(label),
-                      //               //salvando o valor
-                      //               value: label,
-                      //             ))
-                      //         .toList(),
-                      //     decoration: InputDecoration(
-                      //       border: OutlineInputBorder(
-                      //         borderRadius:
-                      //             BorderRadius.all(Radius.circular(30.0)),
-                      //         borderSide: BorderSide(color: Colors.white),
-                      //       ),
-                      //       enabledBorder: OutlineInputBorder(
-                      //         borderRadius:
-                      //             BorderRadius.all(Radius.circular(30.0)),
-                      //         borderSide:
-                      //             BorderSide(color: Colors.white, width: 2.0),
-                      //       ),
-                      //       icon: Icon(
-                      //         Icons.bookmark,
-                      //         color: Colors.deepPurpleAccent,
-                      //       ),
-                      //       labelText: "Informe uma turma",
-                      //       labelStyle: TextStyle(color: Colors.white),
-                      //       hintText: "Escolha uma das opções",
-                      //       hintStyle: TextStyle(color: Colors.white),
-                      //     ),
-                      //     style: TextStyle(
-                      //         color: Colors.deepPurpleAccent, fontSize: 20.0),
-                      //     validator: (value) {
-                      //       if (value == null) {
-                      //         return "Favor selecionar uma turma";
-                      //       }
-                      //       return null;
-                      //     },
-                      //     onSaved: (value) {
-                      //       //deve ser salvar
-                      //     },
-                      //     //segue a mesma ideia do onSaved
-                      //     onChanged: (value) {
-                      //       //deve ser salvo
-                      //     },
-                      //   ),
-                      // ),
                       Padding(
                         padding: EdgeInsets.only(bottom: 40.0),
                         child: DropdownButtonFormField(
@@ -280,28 +116,20 @@ class _PesquisaTrabalhoScreen extends State<PesquisaTrabalhoScreen> {
                                   ))
                               .toList(),
                           decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(30.0)),
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(30.0)),
-                              borderSide:
-                                  BorderSide(color: Colors.white, width: 2.0),
+                              borderSide: BorderSide(
+                                  color: Color(0xFFed145b), width: 2.0),
                             ),
                             icon: Icon(
                               Icons.book,
-                              color: Colors.deepPurpleAccent,
+                              color: Color(0xFFed145b),
                             ),
                             labelText: "Informe a diciplina",
-                            labelStyle: TextStyle(color: Colors.white),
-                            hintText: "Escolha uma das opções",
-                            hintStyle: TextStyle(color: Colors.white),
+                            labelStyle: TextStyle(color: Color(0xFFed145b), fontSize: 20.0),
                           ),
-                          style: TextStyle(
-                              color: Colors.deepPurpleAccent, fontSize: 20.0),
+                          style: TextStyle(color: Colors.black, fontSize: 20.0),
                           validator: (value) {
                             if (value == null) {
                               return "Favor selecionar uma diciplina";
@@ -330,20 +158,18 @@ class _PesquisaTrabalhoScreen extends State<PesquisaTrabalhoScreen> {
                               borderRadius:
                                   BorderRadius.all(Radius.circular(30.0)),
                               borderSide:
-                                  BorderSide(color: Colors.white, width: 2.0),
+                                  BorderSide(color: Color(0xFFed145b), width: 2.0),
                             ),
                             icon: Icon(
                               Icons.border_color,
-                              color: Colors.deepPurple,
+                              color: Color(0xFFed145b),
                             ),
                             labelText: 'Digite o tema',
-                            labelStyle: TextStyle(color: Colors.white),
-                            hintText:
-                                'Exemplo: Nesse trabalho vamos abordar...',
-                            hintStyle: TextStyle(color: Colors.white),
+                            labelStyle: TextStyle(color: Color(0xFFed145b)),
+                            hintText: 'Exemplo: Projeto mobile em flutter',
                           ),
                           style: TextStyle(
-                              color: Colors.deepPurpleAccent, fontSize: 20.0),
+                              color: Colors.black, fontSize: 20.0),
                           validator: (value) {
                             return null;
                           },
@@ -355,7 +181,7 @@ class _PesquisaTrabalhoScreen extends State<PesquisaTrabalhoScreen> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(top: 10.0, left: 00.0),
+                        padding: EdgeInsets.only(top: 40.0, bottom: 40.0),
                         child: Container(
                           height: 60.0,
                           width: 300.0,
@@ -369,12 +195,40 @@ class _PesquisaTrabalhoScreen extends State<PesquisaTrabalhoScreen> {
                               style: TextStyle(
                                   color: Colors.white, fontSize: 19.0),
                             ),
-                            onPressed: () {
+                            onPressed: () async {
+                              // EntregaRepository repository = EntregaRepository();
+                              // EntregasModel entregasModel;
+                              // await repository.getEntrega(int.tryParse(codigo.text)).then((value) => entregasModel = value);
                               if (codigo.text == '') {
                                 _showAlertDialog(context);
                               } else {
                                 _settingModalBottomSheet(context);
                               }
+                            },
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 10.0, left: 00.0),
+                        child: Container(
+                          height: 60.0,
+                          width: 300.0,
+                          child: RaisedButton(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            color: Colors.green,
+                            child: Text(
+                              "Cadastrar novo trabalho",
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: 19.0),
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => CadastroTrabalho()),
+                              );
                             },
                           ),
                         ),
@@ -401,7 +255,7 @@ void _showAlertDialog(BuildContext context) {
   // set up the AlertDialog
   AlertDialog alert = AlertDialog(
     title: Text("Campo obrigatório"),
-    content: Text("É preciso inserir um valor para código"),
+    content: Text("É preciso inserir um valor para o código"),
     actions: [
       okButton,
     ],
@@ -434,12 +288,12 @@ void _settingModalBottomSheet(context) {
                 title: new Text(
                   'NAC 1',
                 ),
-                onTap: () => {}),
-            new ListTile(
-              leading: new Icon(Icons.videocam),
-              title: new Text('Video'),
-              onTap: () => {},
-            ),
+                onTap: () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ViewTrabalho()),
+                      )
+                    }),
           ],
         ),
       );

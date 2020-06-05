@@ -1,10 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:portal_fiap_professor/models/alunos_model.dart';
-import 'package:portal_fiap_professor/models/login_model.dart';
 import 'package:portal_fiap_professor/models/professor_model.dart';
 import 'package:portal_fiap_professor/models/turmas_model.dart';
-import 'package:portal_fiap_professor/repository/professor_repository.dart';
 import 'package:portal_fiap_professor/repository/turma_repository.dart';
 
 class CursoSelecaoScreen extends StatefulWidget {
@@ -75,18 +73,18 @@ class _CursoSelecaoScreen extends State<CursoSelecaoScreen> {
                   );
                 } else {
                   List<TurmasModel> list = snapshot.data;
-                  List<String> cursos = List(); 
-                  list.forEach((element) { 
+                  List<String> cursos = List();
+                  list.forEach((element) {
                     var cont = 0;
-                   if(cursos == null){
-                     cursos.add(element.tipoCurso.toString());
-                   }else{
+                    if (cursos == null) {
+                      cursos.add(element.tipoCurso.toString());
+                    } else {
                       cursos.forEach((elementC) {
-                      element.tipoCurso == elementC ? null : cont++;
-                    });
-                   }
+                        element.tipoCurso == elementC ? null : cont++;
+                      });
+                    }
 
-                    if(cont < 1){
+                    if (cont < 1) {
                       cursos.add(element.tipoCurso);
                     }
                     cont = 0;
@@ -99,7 +97,7 @@ class _CursoSelecaoScreen extends State<CursoSelecaoScreen> {
                         mainAxisSpacing: 30,
                         crossAxisSpacing: 30,
                         shrinkWrap: true,
-                        children: cursos.map((value) {                            
+                        children: cursos.map((value) {
                           return Container(
                             child: MaterialButton(
                               elevation: 0,

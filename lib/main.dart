@@ -1,4 +1,6 @@
+
 import 'package:flutter/material.dart';
+import 'package:portal_fiap_professor/screens/cadastro_trabalho.dart';
 
 import 'package:portal_fiap_professor/screens/login_screen.dart';
 import 'package:portal_fiap_professor/screens/teste_screen.dart';
@@ -6,6 +8,7 @@ import 'package:portal_fiap_professor/screens/funcionalidades_screen.dart';
 import 'package:portal_fiap_professor/screens/si_periodos_screen.dart';
 import 'package:portal_fiap_professor/screens/curso_screen.dart';
 import 'package:portal_fiap_professor/screens/turma_screen.dart';
+import 'package:portal_fiap_professor/screens/view_trabalho.dart';
 
 void main() {
 
@@ -22,8 +25,11 @@ void main() {
         "/turmas": (context) => TurmasScreen(),
         "/periodo": (context) => SiPeriodosScreen(),
         "/funcionalidades": (context) => FuncionalidadesScreen(),
+        "/viewTrabalho": (context) => ViewTrabalho(),
+        "/cadastroTrabalho": (context) => CadastroTrabalho()
+
       },
-      initialRoute: "/",
+      initialRoute: "/funcionalidades",
     )
   );
 }

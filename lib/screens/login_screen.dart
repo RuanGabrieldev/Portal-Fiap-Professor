@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:portal_fiap_professor/components/btn_pattern.dart';
 import 'package:portal_fiap_professor/components/input_field.dart';
 import 'package:portal_fiap_professor/models/login_model.dart';
-import 'package:portal_fiap_professor/models/professor_model.dart';
-import 'package:portal_fiap_professor/models/turmas_model.dart';
 import 'package:portal_fiap_professor/repository/aluno_repository.dart';
 import 'package:portal_fiap_professor/repository/login_repository.dart';
 import 'package:portal_fiap_professor/repository/professor_repository.dart';
-import 'package:portal_fiap_professor/repository/turma_repository.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -15,7 +11,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -103,19 +98,25 @@ class _LoginScreenState extends State<LoginScreen> {
                               await repository
                                   .getLogin(
                                       controllerLogin.text, controllerPass.text)
-                                  .then(
-                                    (value) => loginModel = value
-                                    );
-                              if(controllerLogin.text.isEmpty || controllerPass.text.isEmpty){
-                                  onFail("É necessário preencher os campos para autenticar");
-
-
-                              }else if (loginModel != null) {
-                                loginModel.login.contains("pf") ? 
-                                professorRepository.getProfessor(loginModel.login).then((value) => Navigator.of(context).pushReplacementNamed("/cursos", arguments: value)):
-                                alunoRepository.getAluno(loginModel.login).then((value) => Navigator.of(context).pushReplacementNamed("/cursos", arguments: value));       
+                                  .then((value) => loginModel = value);
+                              if (controllerLogin.text.isEmpty ||
+                                  controllerPass.text.isEmpty) {
+                                onFail(
+                                    "É necessário preencher os campos para autenticar");
+                              } else if (loginModel != null) {
+                                loginModel.login.contains("pf")
+                                    ? professorRepository
+                                        .getProfessor(loginModel.login)
+                                        .then((value) => Navigator.of(context)
+                                            .pushReplacementNamed("/cursos",
+                                                arguments: value))
+                                    : alunoRepository
+                                        .getAluno(loginModel.login)
+                                        .then((value) => Navigator.of(context)
+                                            .pushReplacementNamed("/cursos",
+                                                arguments: value));
                               } else {
-                               onFail("Usuário ou senha inválido.");
+                                onFail("Usuário ou senha inválido.");
                               }
                             },
                             color: Colors.white,
@@ -150,18 +151,11 @@ class _LoginScreenState extends State<LoginScreen> {
         fontFamily: font);
   }
 
- void onFail(String msg) {
+  void onFail(String msg) {
     _scaffoldKey.currentState.showSnackBar(SnackBar(
       content: Text(msg),
       backgroundColor: Colors.red,
       duration: Duration(seconds: 3),
     ));
   }
-
-
-
-
-
-
-
 }
