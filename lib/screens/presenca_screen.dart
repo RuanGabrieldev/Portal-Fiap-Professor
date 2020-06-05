@@ -2,60 +2,50 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:portal_fiap_professor/screens/funcionalidades_screen.dart';
 
-
 class PresencaScreen extends StatefulWidget {
   @override
   _PresencaScreen createState() => _PresencaScreen();
 }
 
 class _PresencaScreen extends State<PresencaScreen> {
-
-
   @override
   Widget build(BuildContext context) {
-
-DateTime now = DateTime.now();
-String formattedDate = DateFormat('dd-MM-yyyy – kk:mm').format(now);
+    DateTime now = DateTime.now();
+    String formattedDate = DateFormat('dd-MM-yyyy – kk:mm').format(now);
 
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Color(0xFF000000),
-          iconTheme: IconThemeData(color: Color(0xFFed145b)),
-          title: Text(
-            'Períodos',
-            style: TextStyle(
-              color: Color(0xFFed145b),
-            ),
-          ),
-          leading: new IconButton(
-            icon: new Icon(Icons.arrow_back),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => FuncionalidadesScreen()),
-              );
-            },
+      appBar: AppBar(
+        backgroundColor: Color(0xFF000000),
+        iconTheme: IconThemeData(color: Color(0xFFed145b)),
+        title: Text(
+          'Períodos',
+          style: TextStyle(
+            color: Color(0xFFed145b),
           ),
         ),
-      backgroundColor: Colors.black,
+        leading: new IconButton(
+          icon: new Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => FuncionalidadesScreen()),
+            );
+          },
+        ),
+      ),
       body: Padding(
-        padding: EdgeInsets.only(left: 20.0, right: 20.0, top: 10.0),
+        padding: EdgeInsets.only(left: 20.0, right: 20.0, top: 40.0),
         child: Column(
           children: <Widget>[
-            Text(
-              "Sistema de Informação",
-              style: TextStyle(color: Colors.white, fontSize: 25.0),
-            ),
+            // Text(
+            //   "Sistema de Informação",
+            //   style: TextStyle(color: Colors.white, fontSize: 25.0),
+            // ),
             Row(
               children: <Widget>[
                 Text(
                   formattedDate,
                   style: TextStyle(color: Colors.pinkAccent, fontSize: 20.0),
-                ),
-                Spacer(flex: 1),
-                Text(
-                  "3ºSIR",
-                  style: TextStyle(color: Colors.pinkAccent, fontSize: 30.0),
                 ),
                 Spacer(flex: 1),
                 Text(
@@ -66,6 +56,13 @@ String formattedDate = DateFormat('dd-MM-yyyy – kk:mm').format(now);
             ),
             Padding(
               padding: EdgeInsets.only(top: 10.0),
+              child: Text(
+                "3ºSIR",
+                style: TextStyle(color: Colors.pinkAccent, fontSize: 30.0),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 30.0),
               child: Container(
                 decoration: myBoxDecoration(),
                 child: Image.asset(
@@ -75,10 +72,10 @@ String formattedDate = DateFormat('dd-MM-yyyy – kk:mm').format(now);
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 10.0),
+              padding: EdgeInsets.only(top: 40.0, bottom: 20.0),
               child: Text(
                 "RM80562 - Gustavo Novaes",
-                style: TextStyle(color: Colors.white, fontSize: 25.0),
+                style: TextStyle(color: Color(0xFFed145b), fontSize: 25.0),
               ),
             ),
             Row(
@@ -167,7 +164,9 @@ String formattedDate = DateFormat('dd-MM-yyyy – kk:mm').format(now);
                   "Finalizar Chamada",
                   style: TextStyle(color: Colors.white, fontSize: 19.0),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pop(context);
+                },
               ),
             ),
           ],
@@ -178,7 +177,7 @@ String formattedDate = DateFormat('dd-MM-yyyy – kk:mm').format(now);
 
   BoxDecoration myBoxDecoration() {
     return BoxDecoration(
-      border: Border.all(width: 10, color: Colors.white),
+      border: Border.all(width: 10, color: Color(0xFFed145b)),
     );
   }
 }

@@ -29,7 +29,7 @@ void main() {
         "/cadastroTrabalho": (context) => CadastroTrabalho()
 
       },
-      initialRoute: "/funcionalidades",
+      initialRoute: "/",
     )
   );
 }
